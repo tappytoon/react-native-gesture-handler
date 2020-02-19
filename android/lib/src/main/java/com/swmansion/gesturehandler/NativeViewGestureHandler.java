@@ -102,6 +102,9 @@ public class NativeViewGestureHandler extends GestureHandler<NativeViewGestureHa
 
   @Override
   protected void onCancel() {
+    if (getView() == null) {
+      return;
+    }
     long time = SystemClock.uptimeMillis();
     MotionEvent event = MotionEvent.obtain(time, time, MotionEvent.ACTION_CANCEL, 0, 0, 0);
     event.setAction(MotionEvent.ACTION_CANCEL);
