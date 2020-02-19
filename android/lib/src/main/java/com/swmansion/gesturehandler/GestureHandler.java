@@ -325,7 +325,9 @@ public class GestureHandler<T extends GestureHandler> {
     int oldState = mState;
     mState = newState;
 
-    mOrchestrator.onHandlerStateChange(this, newState, oldState);
+    if (mOrchestrator != null) {
+      mOrchestrator.onHandlerStateChange(this, newState, oldState);
+    }
 
     onStateChange(newState, oldState);
   }
